@@ -20,7 +20,7 @@ public class RevicionMedicaJpaController implements Serializable {
         this.emf = emf;
     }
         public RevicionMedicaJpaController() {
-        emf = Persistence.createEntityManagerFactory("proyectoFinalPU");
+        emf = Persistence.createEntityManagerFactory("UPfinalPractica");
     }
     private EntityManagerFactory emf = null;
 

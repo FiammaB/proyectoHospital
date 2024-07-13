@@ -4,6 +4,7 @@ package com.mycompany.finalprogjpapractica.logica;
 import java.io.Serializable;
 import java.util.ArrayList;
 import javax.annotation.processing.Generated;
+import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,12 +16,21 @@ public class Hospital implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+    
+    
     @OneToMany(mappedBy="hospital")
     ArrayList<Doctor> listaDoctores= new ArrayList<>();
     @OneToMany(mappedBy="hospital")
     ArrayList<Paciente> listaPacientes= new ArrayList<>();
-
+    @Basic
+    private String nombreHospital;
+    private  int codigoHospital;
     public Hospital() {
+    }
+
+    public Hospital(String nombreHospital, int codigoHospital) {
+        this.nombreHospital = nombreHospital;
+        this.codigoHospital = codigoHospital;
     }
 
     public ArrayList<Doctor> getListaDoctores() {
@@ -45,6 +55,22 @@ public class Hospital implements Serializable {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getNombreHospital() {
+        return nombreHospital;
+    }
+
+    public void setNombreHospital(String nombreHospital) {
+        this.nombreHospital = nombreHospital;
+    }
+
+    public int getCodigoHospital() {
+        return codigoHospital;
+    }
+
+    public void setCodigoHospital(int codigoHospital) {
+        this.codigoHospital = codigoHospital;
     }
 
     @Override

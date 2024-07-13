@@ -15,6 +15,8 @@ import java.util.ArrayList;
  */
 public class ControladoraDoctor {
         ControladoraPersistenciaDoctor controladora = new ControladoraPersistenciaDoctor();
+
+   
     public  void crearDoctor(Doctor doctor){
     controladora.crearDoctor(doctor);}
     

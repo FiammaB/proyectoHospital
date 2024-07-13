@@ -4,9 +4,9 @@
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>com.mycompany.finalprogjpapractica.logica.Doctor</class>
     <class>com.mycompany.finalprogjpapractica.logica.Especialidad</class>
-    <class>com.mycompany.finalprogjpapractica.logica.Hospital</class>
     <class>com.mycompany.finalprogjpapractica.logica.Paciente</class>
     <class>com.mycompany.finalprogjpapractica.logica.RevicionMedica</class>
+    <class>com.mycompany.finalprogjpapractica.logica.Hospital</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/finalproghospital?serverTimezone=UTC"/>
       <property name="javax.persistence.jdbc.user" value="root"/>
