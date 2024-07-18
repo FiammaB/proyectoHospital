@@ -44,7 +44,7 @@ public class ControladoraPersistenciaDoctor {
         ArrayList<Doctor>listaDoctores= new ArrayList<Doctor>(listita);
      return  listaDoctores;}
 
-    public void buscarDoctor(int id) {
-        controladoraDoctor.findDoctor(id);  }
+    public Doctor buscarDoctor(int id) {
+        return controladoraDoctor.findDoctor(id);  }
   
 }

@@ -12,7 +12,7 @@ public class ControladoraEspecialidad {
     controladora.crearEspecialidad(e);}
     
     public  void editarEspecialidad(Especialidad especialidad){
-    controladora.editarDoctor(especialidad);}
+    controladora.editarEspecialidad(especialidad);}
     
     public  void eliminarEspecialidad(int id){
     controladora.eliminarEspecialidad(id);}
@@ -20,6 +20,6 @@ public class ControladoraEspecialidad {
     public  ArrayList<Especialidad>buscarTodasEspecialidad(){
     return controladora.buscarTodasEspecialidad();}
      
-    public  void buscarDoctor(int id){
-    controladora.buscarEspecialidad(id);}
+    public  Especialidad buscarEspecialidad(int id){
+    return controladora.buscarEspecialidad(id);}
 }

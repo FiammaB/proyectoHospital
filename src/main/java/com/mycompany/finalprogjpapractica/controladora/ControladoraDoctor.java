@@ -29,8 +29,8 @@ public class ControladoraDoctor {
     public  ArrayList<Doctor>buscarTodosDoctores(){
     return controladora.buscarTodosDoctores();}
      
-    public  void buscarDoctor(int id){
-    controladora.buscarDoctor(id);}
+    public  Doctor buscarDoctor(int id){
+    return controladora.buscarDoctor(id);}
     
 
   

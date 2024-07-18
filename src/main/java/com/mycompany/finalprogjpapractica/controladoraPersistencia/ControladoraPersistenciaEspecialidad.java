@@ -22,7 +22,7 @@ public class ControladoraPersistenciaEspecialidad {
         controller.create(e);
         }
 
-    public void editarDoctor(Especialidad especialidad) {
+    public void editarEspecialidad(Especialidad especialidad) {
         try {
             controller.edit(especialidad);
         } catch (Exception ex) {
@@ -43,7 +43,8 @@ public class ControladoraPersistenciaEspecialidad {
         ArrayList<Especialidad> listaEspecialidades=new ArrayList<Especialidad>(listita);
        return listaEspecialidades; }
 
-    public void buscarEspecialidad(int id) {
-        controller.findEspecialidad(id);   }
+    public Especialidad buscarEspecialidad(int id) {
+       return  controller.findEspecialidad(id);  
+ }
     
 }

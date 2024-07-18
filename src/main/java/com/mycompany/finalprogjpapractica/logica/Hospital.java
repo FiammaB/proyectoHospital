@@ -73,6 +73,21 @@ public class Hospital implements Serializable {
         this.codigoHospital = codigoHospital;
     }
 
+    public void registrarPaciente(Paciente pac){
+        this.listaPacientes.add(pac);
+    }
+    
+    public void registrarDoctor(Doctor doc){
+        this.listaDoctores.add(doc);
+    }
+    
+    public void eliminarDoctor(int i){
+        this.listaDoctores.remove(i);
+    }
+    
+    public void eliminarPaciente(int i){
+        this.listaPacientes.remove(i);
+    }
     @Override
     public String toString() {
         return "Hospital{" + "Id=" + id + ", listaDoctores=" + listaDoctores + ", listaPacientes=" + listaPacientes + '}';

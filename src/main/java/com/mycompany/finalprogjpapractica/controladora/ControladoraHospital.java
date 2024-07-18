@@ -19,6 +19,6 @@ public class ControladoraHospital {
     public  ArrayList<Hospital>buscarHospiales(){
     return controladora.buscarHospitales();}
      
-    public  void buscarHospital(int id){
-    controladora.bucarHospital(id);}
+    public  Hospital buscarHospital(int id){
+    return controladora.bucarHospital(id);}
 }

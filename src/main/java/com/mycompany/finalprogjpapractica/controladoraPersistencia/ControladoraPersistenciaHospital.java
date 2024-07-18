@@ -42,7 +42,7 @@ public class ControladoraPersistenciaHospital {
         ArrayList<Hospital> listaHospitales=new ArrayList<Hospital>(listita);
        return listaHospitales;    }
 
-    public void bucarHospital(int id) {
-        controller.findHospital(id);   }
+    public Hospital bucarHospital(int id) {
+       return controller.findHospital(id);   }
     
 }
