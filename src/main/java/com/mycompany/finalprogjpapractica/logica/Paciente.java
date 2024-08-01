@@ -34,6 +34,22 @@ public class Paciente extends  Persona implements Serializable{
         this.revicionMedica = revicionMedica;
     }
 
+    public int getCodigoPaciente() {
+        return codigoPaciente;
+    }
+
+    public void setCodigoPaciente(int codigoPaciente) {
+        this.codigoPaciente = codigoPaciente;
+    }
+
+    public Date getFechaInternacion() {
+        return fechaInternacion;
+    }
+
+    public void setFechaInternacion(Date fechaInternacion) {
+        this.fechaInternacion = fechaInternacion;
+    }
+
    
  
     public Paciente() {
@@ -54,6 +70,8 @@ public class Paciente extends  Persona implements Serializable{
     public void setRevicionMedica(RevicionMedica revicionMedica) {
         this.revicionMedica = revicionMedica;
     }
+    
+
 
     @Override
     public String toString() {

@@ -30,7 +30,7 @@ public class ControladoraPaciente {
     public  ArrayList<Paciente>buscarPacientes(){
     return controladora.buscarPacientes();}
      
-    public  void buscarPaciente(int id){
-    controladora.bucarPaciente(id);}
+    public  Paciente buscarPaciente(int id){
+    return controladora.bucarPaciente(id);}
 }
 

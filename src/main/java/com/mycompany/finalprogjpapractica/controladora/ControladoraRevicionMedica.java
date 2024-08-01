@@ -28,6 +28,6 @@ public class ControladoraRevicionMedica {
     public  ArrayList<RevicionMedica>buscarRevicionesMedicas(){
     return controladora.buscarRevicionesMedicas();}
      
-    public  void buscarRevicionMedica(int id){
-    controladora.bucarRevicionMedica(id);}
+    public  RevicionMedica buscarRevicionMedica(int id){
+    return controladora.bucarRevicionMedica(id);}
 }

@@ -47,7 +47,7 @@ public class ControladoraPersistenciaRevicionMedica {
         return listaRevicionesMedicas;
     }
 
-    public void bucarRevicionMedica(int id) {
-       controller.findRevicionMedica(id);  }
+    public RevicionMedica bucarRevicionMedica(int id) {
+       return controller.findRevicionMedica(id);  }
     
 }

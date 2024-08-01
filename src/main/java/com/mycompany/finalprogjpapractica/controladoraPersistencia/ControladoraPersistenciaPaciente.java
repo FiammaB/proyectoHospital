@@ -44,7 +44,7 @@ public class ControladoraPersistenciaPaciente {
         ArrayList<Paciente> listaPacientes=new ArrayList<Paciente>(listita);
        return listaPacientes;    }
 
-    public void bucarPaciente(int id) {
-        controller.findPaciente(id);   }
+    public Paciente bucarPaciente(int id) {
+        return controller.findPaciente(id);   }
     
 }
