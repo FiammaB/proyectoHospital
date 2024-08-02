@@ -27,7 +27,12 @@ public class ControladoraPersistenciaHospital {
           }
 
     public void editarHospital(Hospital h) {
-       controller.create(h);    }
+           try {
+               controller.edit(h);
+           } catch (Exception ex) {
+               Logger.getLogger(ControladoraPersistenciaHospital.class.getName()).log(Level.SEVERE, null, ex);
+           }
+ }
 
     public void eliminarHospital(int id) {
            try {
