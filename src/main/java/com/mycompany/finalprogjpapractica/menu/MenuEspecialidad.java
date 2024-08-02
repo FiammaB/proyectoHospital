@@ -35,7 +35,7 @@ class MenuEspecialidad {
 
                 case 2 -> {editarEspecialidad(sc);}
                 case 3 ->{BuscarEspecialidad(sc);}
-                case 4->{eliminarEspecialidad(sc);}
+                case 4->{eliminarEspecialidad( sc);}
                 case 5->{System.out.println("volviendo..");
                 }
                 default -> {
