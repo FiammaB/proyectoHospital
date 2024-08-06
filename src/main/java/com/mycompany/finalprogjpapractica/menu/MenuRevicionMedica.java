@@ -7,7 +7,8 @@ package com.mycompany.finalprogjpapractica.menu;
 import com.mycompany.finalprogjpapractica.controladoraPersistencia.ControladoraPersistenciaRevicionMedica;
 import com.mycompany.finalprogjpapractica.logica.RevicionMedica;
 import java.util.ArrayList;
-import java.util.Date;
+
+import java.sql.Date;
 import java.util.Scanner;
 
 /**
@@ -87,9 +88,10 @@ class MenuRevicionMedica {
 
             }
         }
+        sc.nextLine();
         System.out.println("ingrese la fecha en formato YYYY/MM/DD");
         String fecha = sc.nextLine();
-        java.sql.Date fechaRM = java.sql.Date.valueOf(fecha);
+        Date fechaRM = Date.valueOf(fecha);
         RevicionMedica revicionMedica = new RevicionMedica(id, codigo, fechaRM);
         crm.crearRevicionMedica(revicionMedica);
     }
@@ -104,6 +106,8 @@ class MenuRevicionMedica {
                 System.out.println("el id es incorrecto intente nuevamente");
                 id = sc.nextInt();
             }
+            do {            
+            
             RevicionMedica revicionMedicaEncontrada = crm.bucarRevicionMedica(id);
             System.out.println("eliga un opcion a editar");
             System.out.println("1-editar codigo");
@@ -115,7 +119,7 @@ class MenuRevicionMedica {
                     System.out.println("ingrese el nuevo codigo");
                     int codigo = sc.nextInt();
                     revicionMedicaEncontrada.setCodigo(codigo);
-
+                   
                 }
                 case 2 -> {
                     System.out.println("ingrese la nueva fecha");
@@ -132,7 +136,7 @@ class MenuRevicionMedica {
                     System.out.println("ese numero no exite, intete con otro");
 
                 }
-            
+            }
         } while (opciones != 3);
 
     }
@@ -140,7 +144,7 @@ class MenuRevicionMedica {
     public static void BuscarRevisaciones(Scanner sc){
          boolean revicion=false;
         do {               
-        System.out.println("ingrese el ide de la revisacion que deseea buscar"); 
+        System.out.println("ingrese el id de la revisacion que deseea buscar"); 
         ArrayList<RevicionMedica> listadeReviciones = new ArrayList<>();
         listadeReviciones=crm.buscarRevicionesMedicas();
         int id= sc.nextInt();
@@ -152,6 +156,7 @@ class MenuRevicionMedica {
            }
                if (!revicion) {
                    System.out.println("el id no corresponde a una revisacion, intente nuevamnete");
+                   break;
                }
         }
             } while (!revicion);
@@ -160,7 +165,7 @@ class MenuRevicionMedica {
         
             boolean revicion=false;
         do {               
-        System.out.println("ingrese el ide de la revisacion que deseea eliminar"); 
+        System.out.println("ingrese el id de la revisacion que deseea eliminar"); 
         ArrayList<RevicionMedica> listadeReviciones = new ArrayList<>();
         listadeReviciones=crm.buscarRevicionesMedicas();
         int id= sc.nextInt();

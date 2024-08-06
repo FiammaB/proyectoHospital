@@ -14,13 +14,17 @@ import javax.persistence.Id;
 @Entity
 public class Especialidad implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private  int codigo;
     @Basic
     private  String nombre ;
 
     public Especialidad(int codigo, String nombre) {
         this.codigo = codigo;
+        this.nombre = nombre;
+    }
+
+    public Especialidad(String nombre) {
         this.nombre = nombre;
     }
 

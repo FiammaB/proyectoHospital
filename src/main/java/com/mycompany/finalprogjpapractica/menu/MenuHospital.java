@@ -114,8 +114,7 @@ public class MenuHospital {
             
         }
            }while (opciones != 3);
-    }
-           
+    }         
     public static void buscarHospital(Scanner sc) {
         mostrarHospital();
         System.out.println("ingrese el id del hospital q busca");

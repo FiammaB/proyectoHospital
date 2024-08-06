@@ -62,6 +62,7 @@ class MenuEspecialidad {
         System.out.println("ingrese el id");
 
         int id = sc.nextInt();
+         sc.nextLine();
         if (!listaEspecialidades.isEmpty()) {
             for (Especialidad especialidad : listaEspecialidades) {
                 while (especialidad.getCodigo() == id) {
@@ -71,6 +72,7 @@ class MenuEspecialidad {
 
             }
         }
+        
         System.out.println("ingrese el codigo");
 
         int codigo = sc.nextInt();
@@ -83,13 +85,14 @@ class MenuEspecialidad {
 
             }
         }
+     sc.nextLine();
         System.out.println("ingrese el nombre de la especialidad");
         String nombre = sc.nextLine();
         Especialidad especialidad = new  Especialidad(codigo, nombre);
         ce.crearEspecialidad(especialidad);    }
 
     public static void editarEspecialidad(Scanner sc ) {
-        System.out.println("EDICION DE REVICIONES MEDICAS");
+        System.out.println("EDICION DE ESPECIALIDADES");
         mostrarEspecialidades();
         int opciones;
             System.out.println("ingrese el id de la revicon medica q desea editar");
@@ -98,26 +101,22 @@ class MenuEspecialidad {
                 System.out.println("el id es incorrecto intente nuevamente");
                 id = sc.nextInt();
             }
+            do{
             Especialidad especialidadEncontrada =ce.buscarEspecialidad(id);
             System.out.println("eliga un opcion a editar");
-            System.out.println("1-editar codigo");
-            System.out.println("2-editar nombre");
-            System.out.println("3-actualizar datos");
+            System.out.println("1-editar nombre");
+            System.out.println("2-actualizar datos");
             opciones = sc.nextInt();
             switch (opciones) {
+     
                 case 1 -> {
-                    System.out.println("ingrese el nuevo codigo");
-                    int codigo = sc.nextInt();
-                    especialidadEncontrada.setCodigo(codigo);
-                    
-
-                }
-                case 2 -> {
+                         sc.nextLine();
                     System.out.println("ingrese la nuevo nombre");
                     String nombre = sc.nextLine();
+                     especialidadEncontrada.setNombre(nombre);
                     
                 }
-                case 3 -> {
+                case 2 -> {
                     ce.editarEspecialidad(especialidadEncontrada);
                     System.out.println("datos actualizados");
                 }
@@ -126,8 +125,8 @@ class MenuEspecialidad {
                     System.out.println("ese numero no exite, intete con otro");
 
                 }
-            
-        } while (opciones != 3);
+            }
+        } while (opciones != 2);
 
     }
 
