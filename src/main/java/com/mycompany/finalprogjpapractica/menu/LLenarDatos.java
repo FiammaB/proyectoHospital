@@ -38,7 +38,11 @@ public class LLenarDatos {
         Especialidad especialidad2= new Especialidad(2, "Oftalmologia");
      
     Paciente paciente1 =new Paciente(343, new Date(), hospital1,revicionMedica1 );
+    paciente1.setNombre("fiamma");
+    paciente1.setCuit(45354522);
     Paciente paciente2 =new Paciente(343, new Date(), hospital2,revicionMedica2 );
+    paciente2.setNombre("Ricardo");
+    paciente2.setCuit(34565432);
      
       Doctor doctor1=new Doctor(2435, especialidad1, hospital2, 4545555, "Roberto");
       Doctor doctor2=new Doctor(2535, especialidad2, hospital1, 45446555, "Fiamma");

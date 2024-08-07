@@ -5,7 +5,9 @@
 package com.mycompany.finalprogjpapractica.menu;
 
 import com.mycompany.finalprogjpapractica.controladora.ControladoraEspecialidad;
+import com.mycompany.finalprogjpapractica.controladoraPersistencia.ControladoraPersistenciaDoctor;
 import com.mycompany.finalprogjpapractica.controladoraPersistencia.ControladoraPersistenciaEspecialidad;
+import com.mycompany.finalprogjpapractica.logica.Doctor;
 import com.mycompany.finalprogjpapractica.logica.Especialidad;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -16,6 +18,7 @@ import java.util.Scanner;
  */
 class MenuEspecialidad {
     static  ControladoraPersistenciaEspecialidad ce = new ControladoraPersistenciaEspecialidad();
+    static  ControladoraPersistenciaDoctor cd = new ControladoraPersistenciaDoctor();
     public static void menuEspecialidad(){
                Scanner sc = new Scanner(System.in);
         int opcion;
@@ -142,11 +145,14 @@ class MenuEspecialidad {
            if (especialidad.getCodigo()==id){
                System.out.println("especialidad encotrada "+ especialidad.toString()); 
                especia=true;
+               break;
            }
+           
+        }
                if (!especia) {
                    System.out.println("el id no corresponde a una Especialidad, intente nuevamnete");
                }
-        }
+           
             } while (!especia);
     }
     public static void eliminarEspecialidad (Scanner sc) {
@@ -157,9 +163,17 @@ class MenuEspecialidad {
         ArrayList<Especialidad> listaEspecialidades = new ArrayList<>();
         listaEspecialidades=ce.buscarTodasEspecialidad();
         int id= sc.nextInt();
-       
+       ArrayList<Doctor> listadeDoctores = new  ArrayList<>();
+       listadeDoctores= cd.buscarTodosDoctores();
+            for (Doctor listadeDoctore : listadeDoctores) {
+                if (listadeDoctore.getEspecialidad().getCodigo()==id) {
+                    cd.eliminarDoctor(listadeDoctore.getId());
+                }
+                
+            }
            for (Especialidad especialidades : listaEspecialidades) {
            if (especialidades.getCodigo()==id){
+               
                ce.eliminarEspecialidad(id);
                System.out.println("Especialidad eliminada "); 
                especia=true;

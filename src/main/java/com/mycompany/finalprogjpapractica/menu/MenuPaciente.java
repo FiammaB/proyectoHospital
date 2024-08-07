@@ -20,7 +20,7 @@ import java.sql.Date;
 class MenuPaciente {
     static ControladoraHospital ch = new ControladoraHospital();
     static ControladoraPaciente cp = new ControladoraPaciente();
-    static  ControladoraRevicionMedica crp = new ControladoraRevicionMedica();
+    static  ControladoraRevicionMedica crm = new ControladoraRevicionMedica();
      
     public static void menuPaciente(){
         Scanner sc = new Scanner(System.in);
@@ -37,8 +37,8 @@ class MenuPaciente {
                 switch (opcion) {
             case 1->registrarPaciente();
              case 2->buscarPaciente() ;   
-             case 3->eliminarPaciente();
-              case 4->editarPaciente();
+             case 3->editarPaciente();
+              case 4->eliminarPaciente();
                case 5->System.out.println("volviendo.....");
             default-> System.out.println("opcion incorrecta, intente nuevamente");
         }
@@ -52,6 +52,7 @@ class MenuPaciente {
         int codigo= sc.nextInt(); 
         System.out.println("ingrese el cuit del paciente");
         int cuit= sc.nextInt(); 
+        sc.nextLine();
                 System.out.println("ingrese el nombre del paciente");
         String nombre= sc.nextLine(); 
         System.out.println("----LISTA DE HOSPITALES DISPONIBLES---");
@@ -59,9 +60,10 @@ class MenuPaciente {
         listaHospitales = ch.buscarHospiales();
         if (!listaHospitales.isEmpty()){
             for (Hospital listaHospital : listaHospitales) {
-                System.out.println("Codigo "+listaHospital.getCodigoHospital()+" ID: "+listaHospital.getId() + "nombre del hopital"+listaHospital.getNombreHospital());
+                System.out.println("Codigo "+listaHospital.getCodigoHospital()+" ID: "+listaHospital.getId() + " nombre del hopital: "+listaHospital.getNombreHospital());
             }
         }
+        sc.nextLine();
         System.out.println("ingresar id de hospital:  ");
         int id =sc.nextInt();
         while (ch.buscarHospital(id)==null) {
@@ -71,7 +73,7 @@ class MenuPaciente {
         Hospital hospitalEncontrado = ch.buscarHospital(id);
         System.out.println("----LISTA REVICIONES MEDICAS DISPONIBLES---");
         ArrayList<RevicionMedica>listaRevicionMedicas= new ArrayList<>();
-        listaRevicionMedicas = crp.buscarRevicionesMedicas();
+        listaRevicionMedicas = crm.buscarRevicionesMedicas();
         if (!listaRevicionMedicas.isEmpty()){
             for (RevicionMedica reviciones : listaRevicionMedicas) {
                 System.out.println("codigo: "+reviciones.getCodigo()+ " ID: "+reviciones.getId()+" Fecha: "+reviciones.getFecha());
@@ -79,11 +81,11 @@ class MenuPaciente {
         }
         System.out.println("ingresar id de Revicion Medica ");
         int idRM =sc.nextInt();
-        while (ch.buscarHospital(idRM)==null) {
+        while (crm.buscarRevicionMedica(idRM)==null) {
             System.out.println("el id ingresado es incorrecto, intente nuevamente");
             idRM=sc.nextInt();
         }
-        RevicionMedica revicionEncontrada=crp.buscarRevicionMedica(id);
+        RevicionMedica revicionEncontrada=crm.buscarRevicionMedica(id);
         Paciente paciente = new Paciente(codigo, new java.util.Date(), hospitalEncontrado, revicionEncontrada, id, nombre);
         cp.crearPaciente(paciente);
         hospitalEncontrado.registrarPaciente(paciente);
@@ -96,7 +98,9 @@ class MenuPaciente {
         System.out.println("ingrese el id del paciente q quiera editar");
         int id=sc.nextInt();
          while (cp.buscarPaciente(id)==null) {
+             
              System.out.println("id no encontrada, intente nuevamente");
+             id=sc.nextInt();
              
         }
          Paciente pacienteEncontrado = cp.buscarPaciente(id);
@@ -111,15 +115,19 @@ class MenuPaciente {
          System.out.println("6-actualizar datos");
          opcion=sc.nextInt();
          switch (opcion) {
-            case 1->{ System.out.println("Ingrese el nuevo  nombre del paciente");
+            case 1->{ 
+                sc.nextLine();
+                System.out.println("Ingrese el nuevo  nombre del paciente");
                          String nombre = sc.nextLine();
                         pacienteEncontrado.setNombre(nombre);         
             }
-            case 2 -> {System.out.println("ingrese el nuevo codigo del paciente");
+            case 2 -> {sc.nextLine();
+                System.out.println("ingrese el nuevo codigo del paciente");
                             int codigo = sc.nextInt();
                             pacienteEncontrado.setCodigoPaciente(codigo);
             }
-            case 3 -> {System.out.println("ingrese el nuevo cuit del paciente");
+            case 3 -> {sc.nextLine();
+            System.out.println("ingrese el nuevo cuit del paciente");
                             int cuit = sc.nextInt();
                             pacienteEncontrado.setCuit(cuit);
             }
@@ -148,7 +156,7 @@ class MenuPaciente {
             Date fechi=Date.valueOf(fecha);
             pacienteEncontrado.setFechaInternacion(fechi);
             }
-            case 6 -> {cp.crearPaciente(pacienteEncontrado);
+            case 6 -> {cp.editarPaciente(pacienteEncontrado);
                 System.out.println("paciente actualizado");
             }
             default->System.out.println("la opcion elegida no existe,intente nuevamente");
@@ -160,8 +168,10 @@ class MenuPaciente {
     public static void buscarPaciente(){  
         Scanner sc = new Scanner(System.in);
         System.out.println("ingrese el codigo del paciente a buscar");
-        mostrarPacientes();
         int id=sc.nextInt();
+        sc.nextLine();
+        
+        
         while(cp.buscarPaciente(id)==null){
             System.out.println("el id es incorrecto, intente nuevamente");
             id=sc.nextInt();
@@ -172,7 +182,7 @@ class MenuPaciente {
         for (Paciente listaPaciente : listaPacientes) {
             if (id==listaPaciente.getId()) {
                 System.out.println("paciente encontrado");
-                System.out.println("Cuit "+listaPaciente.getCuit()+" Nombre  "+listaPaciente.getNombre()+" Codigo"+listaPaciente.getCodigoPaciente()+" "+listaPaciente.getHospital().toString());
+                System.out.println("Cuit "+listaPaciente.getCuit()+" Nombre  "+listaPaciente.getNombre()+" Codigo"+listaPaciente.getCodigoPaciente()+" "+listaPaciente.getHospital().getNombreHospital());
             }
         }
       }
