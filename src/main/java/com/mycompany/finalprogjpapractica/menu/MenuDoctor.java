@@ -59,8 +59,12 @@ class MenuDoctor {
            Scanner sc = new Scanner(System.in);
            System.out.println("ingrese el cuit del doctor");
            int cuit = sc.nextInt();
+           sc.nextLine();
            System.out.println("ingrese el nombre del doctor");
            String nombre = sc.nextLine();
+           sc.nextLine();
+           System.out.println("ingrese la matricula del doctor");
+           int matricula= sc.nextInt();
            System.out.println("Ingrese el codigo de la especialidad");
            ArrayList<Especialidad>listaEspecialidades = new ArrayList<>();
            listaEspecialidades=ce.buscarTodasEspecialidad();
@@ -80,7 +84,7 @@ class MenuDoctor {
            listaHospitales=ch.buscarHospiales();
            
            for (Hospital hospitales : listaHospitales) {
-               System.out.println("codigo: "+hospitales.getCodigoHospital()+" nombre: "+hospitales.getNombreHospital());
+               System.out.println("id: "+hospitales.getId()+" codigo: "+hospitales.getCodigoHospital()+" nombre: "+hospitales.getNombreHospital());
            }
            int hospital= sc.nextInt();
            while(ch.buscarHospital(hospital)==null) {
@@ -95,29 +99,29 @@ class MenuDoctor {
     }
        public static void BuscarDoctores(){
            Scanner sc = new Scanner(System.in);
-           mostrarDoctores();
-           System.out.println("ingrese el numero de matricula");
-           int matricula= sc.nextInt();
-           while (cd.buscarDoctor(matricula)==null) {
+          
+           System.out.println("ingrese el id del doctor");
+           int iddoc= sc.nextInt();
+           while (cd.buscarDoctor(iddoc)==null) {
                System.out.println("la matricula no es correcta,intente nuevamente");
-               matricula=sc.nextInt();
+               iddoc=sc.nextInt();
                
            }
-           Doctor doctorEncontrado= cd.buscarDoctor(matricula);
+           Doctor doctorEncontrado= cd.buscarDoctor(iddoc);
            System.out.println("id "+doctorEncontrado.getId()+" matricula: "+doctorEncontrado.getMatricula()+" nombre: "+doctorEncontrado.getNombre()+
-                   " especialidad: "+doctorEncontrado.getEspecialidad().getNombre()+"hospital"+doctorEncontrado.getHospital().getNombreHospital());
+                   " especialidad: "+doctorEncontrado.getEspecialidad().getNombre()+" hospital: "+doctorEncontrado.getHospital().getNombreHospital());
            }
        public static void editarDoctores(){
              Scanner sc = new Scanner(System.in);
            mostrarDoctores();
-           System.out.println("ingrese el numero de matricula");
-           int matricula= sc.nextInt();
-           while (cd.buscarDoctor(matricula)==null) {
+           System.out.println("ingrese el numero de id");
+           int iddoc= sc.nextInt();
+           while (cd.buscarDoctor(iddoc)==null) {
                System.out.println("la matricula no es correcta,intente nuevamente");
-               matricula=sc.nextInt();
+               iddoc=sc.nextInt();
                
            }
-           Doctor doctorEncontrado= cd.buscarDoctor(matricula);
+           Doctor doctorEncontrado= cd.buscarDoctor(iddoc);
            int opcion;
            do {               
                          System.out.println("eliga la opcion que quiere editar");
@@ -130,16 +134,18 @@ class MenuDoctor {
                          opcion=sc.nextInt();
                          switch (opcion) {
                    case 1->{System.out.println("ingresa la nueva matricula");
-                                 matricula= sc.nextInt();
-                                doctorEncontrado.setMatricula(matricula);
+                                 iddoc= sc.nextInt();
+                                doctorEncontrado.setMatricula(iddoc);
                        
                    }
-                    case 2->{System.out.println("ingresa nuevo nombre del doctor");
+                    case 2->{sc.nextLine();
+                        System.out.println("ingresa nuevo nombre del doctor");
                                  String nombre = sc.nextLine();
                                 doctorEncontrado.setNombre(nombre);
                        
                    } 
-                    case 3->{System.out.println("ingresa nuevo cuit del doctor");
+                    case 3->{sc.nextLine();
+                        System.out.println("ingresa nuevo cuit del doctor");
                                  int cuit = sc.nextInt();
                                 doctorEncontrado.setCuit(cuit);
                        
